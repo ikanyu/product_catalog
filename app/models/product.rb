@@ -1,3 +1,6 @@
 class Product < ApplicationRecord
-  has_many :categories
+  has_one :product_category
+  has_one :category, through: :product_category
+
+  validates_presence_of :name, :price
 end
