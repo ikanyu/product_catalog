@@ -1,7 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Create skincare category
+skin_care = Category.create(name: 'Skin Care')
+
+cleanse = Category.create(name: 'Cleanse')
+cleanse.move_to_child_of(skin_care)
+toner = Category.create(name: 'Toner')
+toner.move_to_child_of(cleanse)
+facial_cleanser = Category.create(name: 'Facial Cleanser')
+facial_cleanser.move_to_child_of(cleanse)
+
+# Create eyecare category
+eye_care = Category.create(name: 'Eye Care')
+eye_care.move_to_child_of(skin_care)
+eye_mask = Category.create(name: 'Eye Mask')
+eye_mask.move_to_child_of(eye_care)
+eye_cream = Category.create(name: 'Eye Cream')
+eye_cream.move_to_child_of(eye_care)
+
+#Create lip care category
+lip_care = Category.create(name: 'Lip Care')
+lip_care.move_to_child_of(skin_care)
+lip_mask = Category.create(name: 'Lip Mask')
+lip_mask.move_to_child_of(lip_care)
+lip_balm = Category.create(name: 'Lip Balm')
+lip_balm.move_to_child_of(lip_care)
+
+# Create make up category
+make_up = Category.create(name: "Make Up")
+
+eyes = Category.create(name: "Eye")
+eyes.move_to_child_of(make_up)
+eyebrow = Category.create(name: "Eyebrow")
+eyebrow.move_to_child_of(eyes)
+mascara = Category.create(name: "Mascara")
+mascara.move_to_child_of(eyes)
+
+face = Category.create(name: "Face")
+face.move_to_child_of(make_up)
+concealer = Category.create(name: "Concealer")
+concealer.move_to_child_of(make_up)
+foundation = Category.create(name: "Foundation")
+foundation.move_to_child_of(make_up)
