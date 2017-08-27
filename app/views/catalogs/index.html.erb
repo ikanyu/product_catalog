@@ -1,10 +1,13 @@
 <h1>Product Catalog</h1>
 
-<%= simple_form_for :categories, url: catalogs_path do |f| %>
-    <%= f.collection_check_boxes :name,
-        nested_set_options(Category.all) {
+<div class="row">
+  <div class="col-4">
+    <div class="row">
+      <%= simple_form_for :categories, url: catalogs_path do |f| %>
+        <%= f.collection_check_boxes :name,
+          nested_set_options(Category.all) {
           |c| "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * c.level
-        } #{c.name}".html_safe },
+          } #{c.name}".html_safe },
         :last,
         :first,
         boolean_style: :inline do |b| %>
@@ -15,5 +18,33 @@
           <% end %>
         </div>
       <% end %>
+    </div>
+    <div class="row">
+      <%= f.submit %>
+    </div>
+  <% end %>
+    </div>
+  <div class="col-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.order(:id).each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+            <td><%= product&.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-<% end %>
+</div>
+
