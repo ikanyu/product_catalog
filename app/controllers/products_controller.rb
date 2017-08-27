@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
     if @product.destroy
       flash[:success] = "Product deleted"
 
-      redirect_to @products_path
+      redirect_to products_path
     end
   end
 
