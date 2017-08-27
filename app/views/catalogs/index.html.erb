@@ -1,0 +1,19 @@
+<h1>Product Catalog</h1>
+
+<%= simple_form_for :categories, url: catalogs_path do |f| %>
+    <%= f.collection_check_boxes :name,
+        nested_set_options(Category.all) {
+          |c| "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * c.level
+        } #{c.name}".html_safe },
+        :last,
+        :first,
+        boolean_style: :inline do |b| %>
+        <div class="form-check">
+          <%= b.label class: "form-check-label" do %>
+            <%= b.check_box %>
+            <%= b.label %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+<% end %>
