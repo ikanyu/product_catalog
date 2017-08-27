@@ -1,0 +1,25 @@
+<h1>Products#index</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product&.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
+        <td><%= link_to "Edit", edit_product_path(product), { class: "btn btn-info" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

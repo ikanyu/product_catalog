@@ -1,0 +1,10 @@
+<h1>Category#show</h1>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>">
+    <%= message %>
+  </div>
+<% end %>
+
+<%= @category.name %>
+<%= @category&.self_and_ancestors&.pluck(:name)&.join(" > ")  %>

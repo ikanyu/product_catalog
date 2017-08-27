@@ -1,0 +1,20 @@
+<h1>Edit New Category</h1>
+
+<% if @category.errors.any?%>
+  <div class="error_explanation">
+    <div class="alert alert-danger">
+      <% @category.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= simple_form_for @category do |f| %>
+  <%= f.input :name %>
+  <%= f.input :parent_id, 
+    collection: nested_set_options(
+      Category.all
+  ) { |c| "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * c.level} #{c.name}".html_safe if !c.leaf? }.reject{ |c| c[0] == nil}, selected: @category.id %>
+<%= f.submit %>
+<% end %>

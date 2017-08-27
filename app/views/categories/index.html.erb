@@ -1,0 +1,36 @@
+<h1>Categories#index</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td>
+          <%= category&.self_and_ancestors&.pluck(:name)&.join(" > ") %>
+        </td>
+        <td>
+          <%= link_to "Edit",
+              edit_category_path(category),
+              { class: "btn btn-info" }
+          %>
+        </td>
+        <td>
+          <%= button_to "Delete",
+              category_path(category),
+              class: "btn btn-danger",
+              method: :delete
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
