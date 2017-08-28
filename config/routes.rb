@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :categories
 
   get "/catalogs", to: "catalogs#index"
-  post "/catalogs/search", to: "catalogs#search"
+  get "/catalogs/:id", to: "catalogs#show"
 end

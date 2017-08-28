@@ -19,12 +19,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |product| %>
+        <% @product_categories.each do |product_category| %>
           <tr>
-            <td><%= product.id %></td>
-            <td><%= product.name %></td>
-            <td><%= product.price %></td>
-            <td><%= product&.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
+            <td><%= product_category.product.id %></td>
+            <td><%= product_category.product.name %></td>
+            <td><%= product_category.product.price %></td>
+            <td><%= product_category.product&.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
           </tr>
         <% end %>
       </tbody>
