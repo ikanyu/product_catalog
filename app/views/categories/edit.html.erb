@@ -1,4 +1,4 @@
-<h1>Edit New Category</h1>
+<h1>Edit Category</h1>
 
 <% if @category.errors.any?%>
   <div class="error_explanation">
@@ -12,9 +12,9 @@
 
 <%= simple_form_for @category do |f| %>
   <%= f.input :name %>
-  <%= f.input :parent_id, 
-    collection: nested_set_options(
-      Category.all
-  ) { |c| "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * c.level} #{c.name}".html_safe if !c.leaf? }.reject{ |c| c[0] == nil}, selected: @category.id %>
-<%= f.submit %>
+  <%= f.input :parent_id,
+    collection: @category.categories_options_exclude_leaf,
+    selected: @category.parent.id
+  %>
+  <%= f.submit %>
 <% end %>

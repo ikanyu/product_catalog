@@ -5,17 +5,21 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product = CategoryPresenter.new(@product)
   end
 
   def create
     @product = Product.new(product_params)
-    find_and_assign_category
 
     if @product.save
+      find_and_assign_category
+
       flash[:success] = "Product created"
 
       redirect_to @product
     else
+      @product = CategoryPresenter.new(@product)
+
       render "new"
     end
   end
@@ -26,6 +30,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @category = CategoryPresenter.new(Category.new)
   end
 
   def update
@@ -37,6 +42,8 @@ class ProductsController < ApplicationController
       flash[:success] = "Product updated"
       redirect_to @product
     else
+      @category = CategoryPresenter.new(Category.new)
+
       render "edit"
     end
   end

@@ -14,6 +14,8 @@ gem "uglifier", ">= 1.3.0"
 gem "bootstrap", "~>4.0.0.beta"
 gem "jquery-rails"
 gem "simple_form"
+gem "faker"
+gem "draper"
 
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"

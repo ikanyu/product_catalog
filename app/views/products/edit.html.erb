@@ -14,7 +14,10 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :price %>
-  <%= f.input :category, collection: nested_set_options(Category.all) { |c| "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * c.level} #{c.name}".html_safe }, selected: @product.category.id %>
+  <%= f.input :category, 
+      collection: @category.options_for_all_categories,
+      selected: @product&.category&.id
+  %>
   <%= f.submit %>
 <% end %>
 

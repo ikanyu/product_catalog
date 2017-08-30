@@ -25,6 +25,8 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
+
+    @category = CategoryPresenter.new(@category)
   end
 
   def update
@@ -37,13 +39,15 @@ class CategoriesController < ApplicationController
 
       redirect_to @category
     else
+      @category = CategoryPresenter.new(@category)
+
       render "edit"
     end
   end
 
   def destroy
     @category = Category.find(params[:id])
-    delete_node_keep_sub_nodes
+    ChildrenReassignmentService.new(@category).perform
 
     @category.reload
 
@@ -69,33 +73,6 @@ class CategoriesController < ApplicationController
       category_parent = Category.find(category_parent_id)
 
       @category.move_to_child_of(category_parent)
-    end
-  end
-
-  def delete_node_keep_sub_nodes
-    if @category.child? && !@category.leaf?
-      move_children_to_immediate_parent
-    else
-      move_children_to_root
-    end
-  end
-
-  def move_children_to_immediate_parent
-    node_immediate_children = @category.children
-    node_immediate_parent = @category.parent
-
-    node_immediate_children.each do |child|
-      child.move_to_child_of(node_immediate_parent)
-      node_immediate_parent.reload
-    end
-  end
-
-  def move_children_to_root
-    node_immediate_children = @category.children
-
-    node_immediate_children.each do |child|
-      child.move_to_root
-      child.reload
     end
   end
 end
