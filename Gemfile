@@ -15,7 +15,6 @@ gem "rails", "~> 5.1.3"
 gem "rubocop", require: false
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
-gem "simplecov", require: false, group: :test
 gem "uglifier", ">= 1.3.0"
 
 gem "awesome_nested_set"
@@ -24,7 +23,7 @@ gem "jbuilder", "~> 2.5"
 gem "turbolinks", "~> 5"
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug"
   gem "capybara", "~> 2.13"
   gem "database_cleaner"
   gem "factory_girl_rails"
@@ -33,9 +32,11 @@ group :development, :test do
 end
 
 group :test do
+  gem "codeclimate-test-reporter", "~> 1.0.0"
   gem "shoulda-matchers",
     git: "https://github.com/thoughtbot/shoulda-matchers.git",
     branch: "rails-5"
+  gem "simplecov"
 end
 
 group :development do
