@@ -1,4 +1,5 @@
 # README
+[![Code Climate](https://codeclimate.com/github/ikanyu/product_catalog/badges/gpa.svg)](https://codeclimate.com/github/ikanyu/product_catalog)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
