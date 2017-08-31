@@ -1,6 +1,10 @@
 AllCops:
   Exclude:
     - db/schema.rb
+    - Rakefile
+    - bin/*
+    - config/**/*
+  TargetRubyVersion: 2.4
 
 Style/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
@@ -345,7 +349,7 @@ Style/StringLiterals:
 Style/TrailingCommaInArguments:
   Description: 'Checks for trailing comma in argument lists.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: no_comma
   SupportedStylesForMultiline:
     - comma
     - consistent_comma
@@ -355,7 +359,7 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInLiteral:
   Description: 'Checks for trailing comma in array and hash literals.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas'
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: no_comma
   SupportedStylesForMultiline:
     - comma
     - consistent_comma

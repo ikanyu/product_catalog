@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     else
       @category = CategoryPresenter.new(@category)
 
-      render 'new'
+      render "new"
     end
   end
 

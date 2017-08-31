@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-31T15:15:32+08:00">2017-08-31T15:15:32+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-08-31T16:02:44+08:00">2017-08-31T16:02:44+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -133,7 +133,7 @@
       <tr>
         <td class="strong"><a href="#666383f2c6ccea622a9e9cc3f0f806991aa47ca7" class="src_link" title="app/presenters/category_presenter.rb">app/presenters/category_presenter.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>27</td>
+        <td>28</td>
         <td>14</td>
         <td>14</td>
         <td>0</td>
@@ -530,7 +530,7 @@
       <tr>
         <td class="strong"><a href="#666383f2c6ccea622a9e9cc3f0f806991aa47ca7" class="src_link" title="app/presenters/category_presenter.rb">app/presenters/category_presenter.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>27</td>
+        <td>28</td>
         <td>14</td>
         <td>14</td>
         <td>0</td>
@@ -881,7 +881,7 @@
         <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">      render &#39;new&#39;</code>
+          <code class="ruby">      render &quot;new&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
@@ -1380,31 +1380,31 @@
         <li class="covered" data-hits="3" data-linenumber="30">
           <span class="hits">3</span>
           
-          <code class="ruby">    if !@product.category.nil?</code>
+          <code class="ruby">    @category = if @product.category.nil?</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="31">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="31">
+          <span class="hits">2</span>
           
-          <code class="ruby">      @category = CategoryPresenter.new(@product.category)</code>
+          <code class="ruby">                  nil</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">                else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="33">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="33">
+          <span class="hits">1</span>
           
-          <code class="ruby">      @category = nil</code>
+          <code class="ruby">                  CategoryPresenter.new(@product.category)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">                end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
@@ -1937,7 +1937,7 @@
         <li class="covered" data-hits="9" data-linenumber="15">
           <span class="hits">9</span>
           
-          <code class="ruby">    options.reject{ |c| c[0] == nil}</code>
+          <code class="ruby">    options.reject { |c| c[0] == nil }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
@@ -1994,19 +1994,25 @@
           <code class="ruby">  def category_label(category)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="25">
-          <span class="hits">5</span>
+        <li class="never" data-hits="" data-linenumber="25">
           
-          <code class="ruby">    &quot;#{&#39;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#39; * category.level} #{category.name}&quot;.html_safe</code>
+          
+          <code class="ruby">    &quot;#{&#39;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#39; * category.level} #{category.name}&quot;.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="covered" data-hits="5" data-linenumber="26">
+          <span class="hits">5</span>
+          
+          <code class="ruby">      html_safe</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby">end</code>

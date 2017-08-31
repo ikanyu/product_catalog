@@ -13,4 +13,3 @@ describe Product do
     it { should belong_to(:category) }
   end
 end
-

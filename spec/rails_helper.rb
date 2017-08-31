@@ -1,6 +1,8 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+if Rails.env.production?
+  abort("The Rails environment is running in production mode!")
+end
 
 require "simplecov"
 SimpleCov.start "rails"
@@ -33,8 +35,6 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  # This block must be here, do not combine with the other `before(:each)` block.
-  # This makes it so Capybara can see the database.
   config.before(:each) do
     DatabaseCleaner.start
   end

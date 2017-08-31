@@ -9,8 +9,11 @@ describe CategoryPresenter do
       sub_category = setup_sub_category(category)
 
       result = [
-        [" #{category.name}", category.id], 
-        ["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{sub_category.name}", sub_category.id]
+        [" #{category.name}", category.id],
+        [
+          "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{sub_category.name}",
+          sub_category.id
+        ]
       ]
 
       expect(category_presenter.options_for_all_categories).to eq result
@@ -47,4 +50,3 @@ describe CategoryPresenter do
     sub_category.move_to_child_of(category)
   end
 end
-

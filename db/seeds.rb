@@ -17,14 +17,17 @@ skin_care_product.save
 cleanse_product = Product.new(name: "cleanse product", price: 13)
 cleanse_product.category = cleanse
 cleanse_product.save
-#Sub sub category level product
+# Sub sub category level product
 toner_product = Product.new(name: "toner product", price: 12)
 toner_product.category = toner
 toner_product.save
 # Product without category
 Product.create(name: "Bar soap", price: 15)
 
-facial_cleanser_product = Product.new(name: "facial cleanser product", price: 12)
+facial_cleanser_product = Product.new(
+  name: "facial cleanser product",
+  price: 12
+)
 facial_cleanser_product.category = facial_cleanser
 facial_cleanser.save
 
@@ -36,7 +39,7 @@ eye_mask.move_to_child_of(eye_care)
 eye_cream = Category.create(name: "Eye Cream")
 eye_cream.move_to_child_of(eye_care)
 
-#Create lip care category
+# Create lip care category
 lip_care = Category.create(name: "Lip Care")
 lip_care.move_to_child_of(skin_care)
 lip_mask = Category.create(name: "Lip Mask")

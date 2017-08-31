@@ -12,7 +12,7 @@ class CategoryPresenter < SimpleDelegator
       category_label(category) if !category.leaf?
     end
 
-    options.reject{ |c| c[0] == nil}
+    options.reject { |c| c[0] == nil }
   end
 
   def hierarchy
@@ -22,6 +22,7 @@ class CategoryPresenter < SimpleDelegator
   private
 
   def category_label(category)
-    "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * category.level} #{category.name}".html_safe
+    "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * category.level} #{category.name}".
+      html_safe
   end
 end
