@@ -1,12 +1,14 @@
 <h1>Product#show</h1>
 
-<br>
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %>">
-    <%= message %>
-  </div>
-<% end %>
+<%= link_to "Edit", edit_product_path(@product), { class: "btn btn-info" } %>
+<%= button_to "Delete",
+  product_path(product),
+  class: "btn btn-danger",
+  method: :delete
+%>
 
+<br>
+<%= render "layouts/flash_message" %>
 <h4>Name</h4>
 <%= @product.name %>
 
@@ -20,6 +22,10 @@
 <h4>Price</h4>
 <%= @product.price %>
 
-<br><br>
+<br>
 
-<%= link_to "Edit", edit_product_path(@product), { class: "btn btn-info" } %>
+<h4>Category Hierarchy</h4>
+<%= @category.hierarchy %>
+
+<br><br><br>
+

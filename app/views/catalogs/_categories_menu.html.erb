@@ -1,0 +1,6 @@
+<% categories.order(:lft).each do |category| %>
+  <div class="row">
+    <%= link_to "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * category.level} #{category.name}".html_safe, controller: "catalogs", action: "index", id: category %>
+  </div>
+<% end %>
+

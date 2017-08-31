@@ -5,22 +5,24 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    @category = CategoryPresenter.new(@category)
   end
 
   def create
     @category = Category.new(category_params)
 
     if @category.save
-     assign_to_parent
-
       redirect_to @category
     else
+      @category = CategoryPresenter.new(@category)
+
       render 'new'
     end
   end
 
   def show
     @category = Category.find(params[:id])
+    @category = CategoryPresenter.new(@category)
   end
 
   def edit
@@ -33,8 +35,6 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     if @category.update_attributes(category_params)
-      assign_to_parent
-
       flash[:success] = "Category updated"
 
       redirect_to @category
@@ -62,17 +62,8 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(
-      :name
+      :name,
+      :parent_id
     )
-  end
-
-  def assign_to_parent
-    category_parent_id = params[:category][:parent_id]
-
-    if !category_parent_id.empty?
-      category_parent = Category.find(category_parent_id)
-
-      @category.move_to_child_of(category_parent)
-    end
   end
 end

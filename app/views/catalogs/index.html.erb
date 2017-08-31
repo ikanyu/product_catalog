@@ -2,11 +2,7 @@
 
 <div class="row">
   <div class="col-4">
-    <% @categories.order(:lft).each do |category| %>
-      <div class="row">
-        <%= link_to "#{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * category.level} #{category.name}".html_safe, controller: "catalogs", action: "show", id: category  %>
-      </div>
-    <% end %>
+    <%= render partial: "categories_menu", locals: {categories: @categories} %>
   </div>
   <div class="col-8">
     <table class="table">
@@ -19,14 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= product.id %></td>
-            <td><%= product.name %></td>
-            <td><%= product.price %></td>
-            <td><%= product&.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
-          </tr>
-        <% end %>
+        <%= render partial: "catalog_results", locals: {products: @products} %>
       </tbody>
     </table>
   </div>

@@ -16,6 +16,7 @@ gem "jquery-rails"
 gem "simple_form"
 gem "faker"
 gem "draper"
+gem 'simplecov', :require => false, :group => :test
 
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"

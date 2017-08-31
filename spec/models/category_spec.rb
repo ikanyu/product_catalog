@@ -6,10 +6,6 @@ describe Category do
   end
 
   describe "products" do
-    it { should have_many(:product_categories).dependent(:destroy) }
-  end
-
-  describe "product_categories" do
-    it { should have_many(:products).through(:product_categories) }
+    it { should have_many(:products) }
   end
 end

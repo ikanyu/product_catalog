@@ -9,12 +9,8 @@ describe Product do
     it { should validate_presence_of(:price) }
   end
 
-  describe "product_category" do
-    it { should have_one(:product_category) }
-  end
-
   describe "category" do
-    it { should have_one(:category).through(:product_category) }
+    it { should belong_to(:category) }
   end
 end
 

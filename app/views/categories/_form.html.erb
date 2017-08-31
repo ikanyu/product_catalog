@@ -1,0 +1,6 @@
+<%= simple_form_for category do |f| %>
+  <%= f.input :name %>
+  <%= f.input :parent_id, collection: category.options_exclude_leaf %>
+  <%= f.submit %>
+<% end %>
+

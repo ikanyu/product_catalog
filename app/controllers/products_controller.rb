@@ -5,14 +5,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product = CategoryPresenter.new(@product)
+    @category = CategoryPresenter.new(Category.new)
   end
 
   def create
     @product = Product.new(product_params)
+    @category = CategoryPresenter.new(Category.new)
 
     if @product.save
-      find_and_assign_category
 
       flash[:success] = "Product created"
 
@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @category = CategoryPresenter.new(@product.category)
   end
 
   def edit
@@ -37,8 +38,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(product_params)
-      find_and_assign_category
-
       flash[:success] = "Product updated"
       redirect_to @product
     else
@@ -64,12 +63,8 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :name,
       :description,
-      :price
+      :price,
+      :category_id
     )
-  end
-
-  def find_and_assign_category
-    category = Category.find(params[:product][:category])
-    @product.category = category
   end
 end

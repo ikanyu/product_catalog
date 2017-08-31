@@ -1,14 +1,34 @@
-example_id                                       | status | run_time        |
------------------------------------------------- | ------ | --------------- |
-./spec/requests/category_request_spec.rb[1:1]    | passed | 0.42556 seconds |
-./spec/requests/category_request_spec.rb[1:2]    | passed | 0.03971 seconds |
-./spec/requests/category_request_spec.rb[1:3]    | passed | 0.01316 seconds |
-./spec/requests/category_request_spec.rb[1:4]    | passed | 0.02099 seconds |
-./spec/requests/category_request_spec.rb[1:5]    | passed | 0.01986 seconds |
-./spec/requests/category_request_spec.rb[1:6]    | passed | 0.0696 seconds  |
-./spec/requests/products_controller_spec.rb[1:1] | passed | 0.01067 seconds |
-./spec/requests/products_controller_spec.rb[1:2] | passed | 0.48301 seconds |
-./spec/requests/products_controller_spec.rb[1:3] | passed | 0.00877 seconds |
-./spec/requests/products_controller_spec.rb[1:4] | passed | 0.01289 seconds |
-./spec/requests/products_controller_spec.rb[1:5] | passed | 0.06832 seconds |
-./spec/requests/products_controller_spec.rb[1:6] | passed | 0.05566 seconds |
+example_id                                                     | status | run_time        |
+-------------------------------------------------------------- | ------ | --------------- |
+./spec/models/category_spec.rb[1:1:1]                          | passed | 0.00292 seconds |
+./spec/models/category_spec.rb[1:2:1]                          | passed | 0.00302 seconds |
+./spec/models/product_spec.rb[1:1:1]                           | passed | 0.00253 seconds |
+./spec/models/product_spec.rb[1:2:1]                           | passed | 0.00242 seconds |
+./spec/models/product_spec.rb[1:3:1]                           | passed | 0.00158 seconds |
+./spec/presenter/category_presenter_spec.rb[1:1:1]             | passed | 0.02273 seconds |
+./spec/presenter/category_presenter_spec.rb[1:1:2]             | passed | 0.02244 seconds |
+./spec/presenter/category_presenter_spec.rb[1:1:3]             | passed | 0.02082 seconds |
+./spec/requests/catalogs_request_spec.rb[1:1]                  | passed | 0.0367 seconds  |
+./spec/requests/catalogs_request_spec.rb[1:2]                  | passed | 0.02419 seconds |
+./spec/requests/categories_request_spec.rb[1:1]                | passed | 0.01201 seconds |
+./spec/requests/categories_request_spec.rb[1:2]                | passed | 0.01689 seconds |
+./spec/requests/categories_request_spec.rb[1:3]                | passed | 0.03202 seconds |
+./spec/requests/categories_request_spec.rb[1:4:1]              | passed | 0.01389 seconds |
+./spec/requests/categories_request_spec.rb[1:4:2]              | passed | 0.01206 seconds |
+./spec/requests/categories_request_spec.rb[1:5:1]              | passed | 0.01269 seconds |
+./spec/requests/categories_request_spec.rb[1:5:2]              | passed | 0.01769 seconds |
+./spec/requests/categories_request_spec.rb[1:6]                | passed | 0.02608 seconds |
+./spec/requests/categories_request_spec.rb[1:7]                | passed | 0.01726 seconds |
+./spec/requests/products_request_spec.rb[1:1]                  | passed | 0.02684 seconds |
+./spec/requests/products_request_spec.rb[1:2]                  | passed | 0.01421 seconds |
+./spec/requests/products_request_spec.rb[1:3]                  | passed | 0.01925 seconds |
+./spec/requests/products_request_spec.rb[1:4:1]                | passed | 0.01723 seconds |
+./spec/requests/products_request_spec.rb[1:4:2]                | passed | 0.01675 seconds |
+./spec/requests/products_request_spec.rb[1:5:1]                | passed | 0.0186 seconds  |
+./spec/requests/products_request_spec.rb[1:5:2]                | passed | 0.0236 seconds  |
+./spec/requests/products_request_spec.rb[1:6]                  | passed | 0.02729 seconds |
+./spec/requests/products_request_spec.rb[1:7]                  | passed | 0.43368 seconds |
+./spec/services/children_reassignment_service_spec.rb[1:1:1:1] | passed | 0.02493 seconds |
+./spec/services/children_reassignment_service_spec.rb[1:2:1:1] | passed | 0.03961 seconds |
+./spec/services/children_reassignment_service_spec.rb[1:2:2:1] | passed | 0.02824 seconds |
+./spec/services/children_reassignment_service_spec.rb[1:3:1:1] | passed | 0.02861 seconds |

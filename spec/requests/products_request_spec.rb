@@ -24,34 +24,75 @@ describe "Products page request" do
     expect(response).to have_http_status :ok
   end
 
-  it "creates product #create" do
-    category = create(:category)
+  describe "creates product #create" do
+    it "successfully" do
+      category = create(:category)
 
-    post products_path, params: {
-      product: {
-        name: "abc",
-        description: "abc description",
-        price: 13.50,
-        category: category.id
+      post products_path, params: {
+        product: {
+          name: "abc",
+          description: "abc description",
+          price: 13.50,
+          category: category.id
+        }
       }
-    }
 
-    expect(Product.first.name).to eq "abc"
+      expect(Product.first.name).to eq "abc"
+      expect(response).to have_http_status 302
+
+      follow_redirect!
+
+      expect(response).to have_http_status :success
+    end
+
+    it "unsuccessfully" do
+      category = create(:category)
+
+      post products_path, params: {
+        product: {
+          name: "abc",
+          description: "",
+          category: category.id
+        }
+      }
+
+      expect(Product.count).to eq 0
+      expect(response).to have_http_status :ok
+    end
   end
 
-  it "updates product #update" do
-    category = create(:category)
-    product = create(:product)
+  describe "updates product #update" do
+    it "successfully" do
+      category = create(:category)
+      product = create(:product)
 
-    put product_path(product.id), params: {
-      product: {
-        name: "new name",
-        category: category.id
+      put product_path(product.id), params: {
+        product: {
+          name: "new name",
+          category_id: category.id
+        }
       }
-    }
 
-    expect(product.reload.name).to eq "new name"
-    expect(product.category).to eq category
+      expect(product.reload.name).to eq "new name"
+      expect(product.category).to eq category
+    end
+
+    it "unsuccessfully" do
+      category = create(:category)
+      product = create(:product)
+      product_name = product.name
+
+      put product_path(product.id), params: {
+        product: {
+          name: nil,
+          price: nil,
+          category_id: category.id
+        }
+      }
+
+      expect(product.reload.name).to eq product_name
+      expect(response).to have_http_status :ok
+    end
   end
 
   it "deletes product #destroy" do
@@ -62,5 +103,12 @@ describe "Products page request" do
 
     expect(Product.count).to eq 0
     expect(Category.count).to eq 1
+  end
+
+  it "displays form #edit" do
+    product = create(:product)
+    get edit_product_path(product)
+
+    expect(response).to have_http_status :ok
   end
 end

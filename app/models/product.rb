@@ -1,6 +1,5 @@
 class Product < ApplicationRecord
-  has_one :product_category
-  has_one :category, through: :product_category
+  belongs_to :category, optional: true
 
   validates_presence_of :name, :price
 end

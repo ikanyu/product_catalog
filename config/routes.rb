@@ -3,6 +3,5 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  get "/catalogs", to: "catalogs#index"
-  get "/catalogs/:id", to: "catalogs#show"
+  get "/catalogs(/:id)", to: "catalogs#index", as: "catalogs"
 end

@@ -1,0 +1,9 @@
+<% products.each do |product| %>
+  <tr>
+    <td><%= product.id %></td>
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td><%= product.category&.self_and_ancestors&.pluck(:name)&.join(" > ") %></td>
+  </tr>
+<% end %>
+

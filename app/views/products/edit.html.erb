@@ -1,23 +1,6 @@
 <h1>Edit Product</h1>
 
-<% if @product.errors.any?%>
-  <div class="error_explanation">
-    <div class="alert alert-danger">
-      <% @product.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render partial: "layouts/error_message", locals: {object: @product} %>
 
-<%= simple_form_for @product do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :category, 
-      collection: @category.options_for_all_categories,
-      selected: @product&.category&.id
-  %>
-  <%= f.submit %>
-<% end %>
+<%= render partial: "form", locals: {product: @product, category: @category} %>
 

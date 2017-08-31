@@ -1,20 +1,23 @@
 class CatalogsController < ApplicationController
   def index
-    category_ids = ProductCategory.pluck(:category_id).uniq
-    product_ids = ProductCategory.pluck(:product_id)
+    if params[:id].nil?
+      @categories = Category.where(id: category_ids_with_product)
+      @products = Product.all
+    else
+      category = Category.find(params[:id])
+      result_ids = category.self_and_descendants.pluck(:id)
 
-    @categories = Category.where(id: category_ids)
-    @products = Product.where(id: product_ids)
+      @categories = Category.where(id: category_ids_with_product)
+      @products = Product.where(category_id: result_ids)
+    end
   end
 
-  def show
-    category_ids = ProductCategory.pluck(:category_id).uniq
+  private
 
-    category = Category.find(params[:id])
+  def category_ids_with_product
+    category_ids = Category.pluck(:id)
+    product_category_ids = Product.pluck(:category_id).uniq
 
-    result_ids = category.self_and_descendants.pluck(:id)
-
-    @categories = Category.where(id: category_ids)
-    @product_categories = ProductCategory.where(category_id: result_ids)
+    category_ids & product_category_ids
   end
 end
