@@ -16,12 +16,23 @@ describe "Products page request" do
     expect(response).to have_http_status :ok
   end
 
-  it "displays product details #show" do
-    product = create(:product)
+  describe "displays product details #show" do
+    it "does not have category" do
+      category = create(:category)
+      product = create(:product, category: category)
 
-    get product_path(product.id)
+      get product_path(product)
 
-    expect(response).to have_http_status :ok
+      expect(response).to have_http_status :ok
+    end
+
+    it "has category" do
+      product = create(:product)
+
+      get product_path(product)
+
+      expect(response).to have_http_status :ok
+    end
   end
 
   describe "creates product #create" do

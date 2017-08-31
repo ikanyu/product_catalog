@@ -26,7 +26,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @category = CategoryPresenter.new(@product.category)
+
+    if !@product.category.nil?
+      @category = CategoryPresenter.new(@product.category)
+    else
+      @category = nil
+    end
   end
 
   def edit

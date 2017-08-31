@@ -16,7 +16,8 @@ gem "jquery-rails"
 gem "simple_form"
 gem "faker"
 gem "draper"
-gem 'simplecov', :require => false, :group => :test
+gem "simplecov", :require => false, :group => :test
+gem "rubocop", require: false
 
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
