@@ -1,26 +1,20 @@
-# README
-[![Code Climate](https://codeclimate.com/github/ikanyu/product_catalog/badges/gpa.svg)](https://codeclimate.com/github/ikanyu/product_catalog)
-[![Test Coverage](https://codeclimate.com/github/ikanyu/product_catalog/badges/coverage.svg)](https://codeclimate.com/github/ikanyu/product_catalog/coverage)
+# Product Catalog Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web application to store and display product and category information
 
-Things you may want to cover:
+## Setup
+```
+git clone https://github.com/ikanyu/product_catalog.git
+cd product_catalog
+bundle install
+```
 
-* Ruby version
+## Setup database
+```
+rake db:setup
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Start Server
+```
+rails s
+```
