@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-4">
-    <%= render partial: "categories_menu", locals: {categories: @categories} %>
+    <%= render "categories_menu", categories: @categories %>
   </div>
   <div class="col-8">
     <table class="table">
@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "catalog_results", locals: {products: @products} %>
+        <%= render "catalog_results", products: @products %>
       </tbody>
     </table>
   </div>

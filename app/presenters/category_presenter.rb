@@ -16,6 +16,8 @@ class CategoryPresenter < SimpleDelegator
   end
 
   def hierarchy
+    return if blank?
+
     self_and_ancestors&.pluck(:name)&.join(" > ")
   end
 

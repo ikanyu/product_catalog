@@ -1,5 +1,5 @@
 <h1>Edit Category</h1>
 
-<%= render partial: "layouts/error_message", locals: {object: @category} %>
+<%= render "layouts/error_message", object: @category %>
 
-<%= render partial: "form", locals: {category: @category} %>
+<%= render "form", category: @category %>

@@ -1,6 +1,6 @@
 <h1>Edit Product</h1>
 
-<%= render partial: "layouts/error_message", locals: {object: @product} %>
+<%= render "layouts/error_message", object: @product %>
 
-<%= render partial: "form", locals: {product: @product, category: @category} %>
+<%= render "form", product: @product, category: @category %>
 

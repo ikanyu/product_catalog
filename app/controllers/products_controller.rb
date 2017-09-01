@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+
+    @category = CategoryPresenter.new(new)
   end
 
   def new
@@ -13,10 +15,7 @@ class ProductsController < ApplicationController
     @category = CategoryPresenter.new(Category.new)
 
     if @product.save
-
-      flash[:success] = "Product created"
-
-      redirect_to @product
+      redirect_to @product, flash: { success: "Product created" }
     else
       @product = CategoryPresenter.new(@product)
 
@@ -27,9 +26,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
-    @category = if @product.category.nil?
-                  nil
-                else
+    @category = if @product.category.present?
                   CategoryPresenter.new(@product.category)
                 end
   end
@@ -43,8 +40,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(product_params)
-      flash[:success] = "Product updated"
-      redirect_to @product
+      redirect_to @product, flash: { sucess: "Product updated" }
     else
       @category = CategoryPresenter.new(Category.new)
 
@@ -56,9 +52,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.destroy
-      flash[:success] = "Product deleted"
-
-      redirect_to products_path
+      redirect_to products_path, flash: { success: "Product deleted" }
     end
   end
 
