@@ -2,4 +2,4 @@
 
 <%= render "layouts/error_message", object: @category %>
 
-<%= render "form", category: @category %>
+<%= render "form", category: @category, dropdown: @category.options_exclude_leaf %>

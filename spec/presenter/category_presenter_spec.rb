@@ -41,6 +41,16 @@ describe CategoryPresenter do
       expect(category_presenter.hierarchy).
         to eq "#{category.name} > #{sub_category.name}"
     end
+
+    it "returns categories without same level and root" do
+      category = create(:category)
+      sub_category = setup_sub_category(category)
+      setup_sub_category(sub_category)
+      category_presenter = CategoryPresenter.new(sub_category)
+
+      expect(category_presenter.options_exclude_self_level_and_leaf).
+        to eq [[" #{category.name}", category.id]]
+    end
   end
 
   private

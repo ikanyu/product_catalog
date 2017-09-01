@@ -1,5 +1,9 @@
 <h1>Edit Category</h1>
+<h5>Note: You are unable to change the parent of a root element</h5>
 
 <%= render "layouts/error_message", object: @category %>
 
-<%= render "form", category: @category %>
+<%= render "form",
+    category: @category,
+    dropdown: @category.options_exclude_self_level_and_leaf
+%>
